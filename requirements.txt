@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlalchemy[asyncio]
+sqlmodel
+asyncpg
+redis
+pydantic
+pydantic-settings
+python-dotenv
+httpx
+africastalking
+pyjwt
+python-multipart
+aiocache
+pandas
+beautifulsoup4
+requests
