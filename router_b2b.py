@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 import os
 from valuation_service import ValuationService, ValuationStatus
+from constants import PropertyType
 
 router = APIRouter(prefix="/b2b", tags=["B2B Integration"])
 
@@ -25,11 +26,22 @@ class TrustBadgeResponse(BaseModel):
 
 @router.post("/trust-badge", response_model=TrustBadgeResponse)
 async def get_trust_badge(request: TrustBadgeRequest):
-    status, message, avg = ValuationService.calculate_fmv(
-        request.state, request.town, request.bedrooms, request.price
+    # Mapping bedrooms to property types for the engine
+    prop_type = PropertyType.FLAT_1BR
+    if request.bedrooms == 2: prop_type = PropertyType.FLAT_2BR
+    elif request.bedrooms == 3: prop_type = PropertyType.FLAT_3BR
+    elif request.bedrooms >= 4: prop_type = PropertyType.FLAT_4BR
+
+    result = ValuationService.calculate_valuation(
+        state=request.state,
+        lga=request.town, # Using town as LGA for the demo
+        property_type=prop_type,
+        input_price=request.price
     )
     
-    if status == ValuationStatus.FAIR_MARKET:
+    status = result["status"]
+    
+    if status == ValuationStatus.FAIR_MARKET_VALUE:
         # Create a signed token for the listing site
         payload = {
             "listing_id": request.listing_id,

@@ -9,6 +9,7 @@ def seed_benchmarks():
     benchmarks = [
         # Lagos - Eti-Osa
         MarketBenchmark(state="Lagos", lga="Eti-Osa", neighborhood="Ikoyi", property_type=PropertyType.PENTHOUSE, avg_market_price=950_000_000),
+        MarketBenchmark(state="Lagos", lga="Eti-Osa", neighborhood="Ikoyi", property_type=PropertyType.FLAT_4BR, avg_market_price=350_000_000),
         MarketBenchmark(state="Lagos", lga="Eti-Osa", neighborhood="Lekki Phase 1", property_type=PropertyType.FLAT_3BR, avg_market_price=220_000_000),
         MarketBenchmark(state="Lagos", lga="Eti-Osa", property_type=PropertyType.FLAT_3BR, avg_market_price=180_000_000, is_lga_default=True),
         MarketBenchmark(state="Lagos", lga="Eti-Osa", property_type=PropertyType.FULLY_DET_DUPLEX, avg_market_price=450_000_000, is_lga_default=True),
@@ -16,12 +17,14 @@ def seed_benchmarks():
         # Abuja
         MarketBenchmark(state="FCT", lga="Abuja Municipal", neighborhood="Maitama", property_type=PropertyType.FULLY_DET_DUPLEX, avg_market_price=850_000_000),
         MarketBenchmark(state="FCT", lga="Abuja Municipal", property_type=PropertyType.FULLY_DET_DUPLEX, avg_market_price=650_000_000, is_lga_default=True),
+        MarketBenchmark(state="FCT", lga="Abuja Municipal", property_type=PropertyType.FLAT_4BR, avg_market_price=180_000_000, is_lga_default=True),
         
         # Kaduna
         MarketBenchmark(state="Kaduna", lga="Chikun", property_type=PropertyType.BUNGALOW, avg_market_price=45_000_000, is_lga_default=True),
         
         # State Medians (Fallback Tier 3)
         MarketBenchmark(state="Lagos", property_type=PropertyType.FLAT_3BR, avg_market_price=120_000_000, is_state_median=True, lga="State"),
+        MarketBenchmark(state="Lagos", property_type=PropertyType.FLAT_4BR, avg_market_price=200_000_000, is_state_median=True, lga="State"),
         MarketBenchmark(state="FCT", property_type=PropertyType.FULLY_DET_DUPLEX, avg_market_price=400_000_000, is_state_median=True, lga="State"),
     ]
 

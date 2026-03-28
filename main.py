@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from router_institution import router as institution_router
 from router_sms import router as sms_router
+from router_b2b import router as b2b_router
 from models import init_db
 import uvicorn
 
@@ -14,6 +15,7 @@ def on_startup():
 # Register Routers
 app.include_router(institution_router)
 app.include_router(sms_router)
+app.include_router(b2b_router)
 
 @app.get("/")
 async def root():
