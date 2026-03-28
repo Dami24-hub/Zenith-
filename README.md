@@ -48,6 +48,33 @@ Categorizes the entire Nigerian market:
 
 ---
 
+## 🛡 B2B Trust Badge Integration (`/b2b`)
+
+For listing portals like Jiji or Nigeria Property Centre:
+`POST /b2b/trust-badge`
+```json
+{
+  "listing_id": "JIJI-89234",
+  "state": "Lagos",
+  "town": "Ikoyi",
+  "bedrooms": 4,
+  "price": 250000000
+}
+```
+**Output:** A cryptographically signed **JWT Token** and `verified: true` status. Portals use this to display the Zenith "Verified Property" badge.
+
+---
+
+## 📱 Consumer SMS Hook (Africa's Talking)
+
+Zenith is 100% accessible via SMS for the 80M+ Nigerians without constant data access.
+**Shortcode:** `83614` (Sandbox)
+**Format:** `State, LGA, Property Type, Price`
+**Example:** `Lagos, Eti-Osa, 3BR Flat, 100M`
+**Reply:** Instant valuation verdict delivered via Africa's Talking SMS API.
+
+---
+
 ## 📈 National Data Strategy
 Our engine is powered by a multi-source ingestion layer:
 1.  **Volume Ingestion**: Jiji.ng (bulk market data).
